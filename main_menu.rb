@@ -22,15 +22,14 @@ def go_on? save_proc
   end
 end
 
-file['new'] = proc do
-  if go_on? file['save']
+file['New         Ctrl+N'] = proc do
+  if go_on? file['Save        Ctrl+S']
     $bw.init
   end
 end
-keymap 'n', :ctrl, file['new']
 
-file['open'] = proc do
-  if go_on? file['save']
+file['Open        Ctrl+O'] = proc do
+  if go_on? file['Save        Ctrl+S']
     fn = choose_file 'ruby file'=>'*.rb', 'all'=>'*.*'
     if fn and File.exist? fn
       ed = EncodingDetect.new fn
@@ -42,7 +41,6 @@ file['open'] = proc do
     end
   end
 end
-keymap 'o', :ctrl, file['open']
 
 # ------------------------------------------------------------------------------
 
@@ -61,25 +59,23 @@ def save fn
   end
 end
 
-file['save'] = proc do
+file['Save        Ctrl+S'] = proc do
   fn = $bw.filename
   fn = save_file() if fn.empty?
   save fn
 end
-keymap 's', :ctrl, file['save']
 
-file['save as ...'] = proc do
+file['Save as ...'] = proc do
   fn = save_file()
   save fn
 end
-keymap 's', :ctrl, :shift, file['save as ...']
 
 # ------------------------------------------------------------------------------
 
 file['line1'] = nil
 
-file['exit']  = proc do
-  if go_on? file['save']
+file['Exit']  = proc do
+  if go_on? file['Save        Ctrl+S']
     # change config[window]
     win = $config['window']
   
@@ -98,14 +94,18 @@ file['exit']  = proc do
   # return nil to stop PostQuitMessage()
 end
 
-MainMenu['file'] = file
+MainMenu['File'] = file
+# keymap
+keymap 'N', :ctrl, & file['New         Ctrl+N']
+keymap 'O', :ctrl, & file['Open        Ctrl+O']
+keymap 'S', :ctrl, & file['Save        Ctrl+S']
 
 
 # ------------------------------------------------------------------------------
 # edit
 # ------------------------------------------------------------------------------
 
-MainMenu['edit'] = {}
+MainMenu['Edit'] = {}
 
 
 # ------------------------------------------------------------------------------
@@ -113,5 +113,6 @@ MainMenu['edit'] = {}
 # ------------------------------------------------------------------------------
 
 MainMenu['?'] = proc do
-  alert 'black wing editor'
+  alert 'Blackwing Editor ver -1'
 end
+

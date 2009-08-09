@@ -48,9 +48,10 @@ exit if __FILE__ != $PROGRAM_NAME # for OCRA
 win = $config['window']
 view [win['width'], win['height']], title: '', layout: :zoom do |v|
 
+  # main window
   v.pos = win['left'], win['top']
   v.menu MainMenu
-  v.onexit = MainMenu['file']['exit']
+  v.onexit = MainMenu['File']['Exit']
   $bw.main_window = v
 
   # editor
@@ -60,10 +61,13 @@ view [win['width'], win['height']], title: '', layout: :zoom do |v|
   s.line_margin = 1 # show line number
   s.fold_margin = 2
   s.indent      = 2 # auto indent 2 chars when needed
-  s.onchar  = proc do
+  s.onmodified  = proc do |sci, lparam|
     unless $bw.modified
-      $bw.modified = true
-      v.title = v.title + '*'
+      scn = Cici::Scintilla.scn lparam
+      if ((scn.modificationType & 3) > 0)
+        $bw.modified = true
+        v.title = v.title + '*'
+      end
     end
   end
   $bw.sci = s
