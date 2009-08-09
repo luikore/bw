@@ -1,0 +1,3 @@
+= blackwing
+
+very pure text editor, based on cici.
