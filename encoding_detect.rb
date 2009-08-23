@@ -1,5 +1,6 @@
 # coding: ascii-8bit
 # note: string comparation is encoding first
+#       same content in different encoding means not equal
 
 # detect file encoding
 # and provide a method to read file and encode to utf-8

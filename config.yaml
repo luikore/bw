@@ -1,10 +1,12 @@
 --- 
 window: 
-  left: 487
-  top: 227
-  width: 612
-  height: 408
+  size: 
+  - 476
+  - 413
+  pos: 
+  - 116
+  - 28
 font: 
-  face: Monaco
-  size: 9
+- Monaco
+- 9
 default_encoding: utf-8
