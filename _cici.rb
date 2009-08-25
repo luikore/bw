@@ -4,3 +4,5 @@ begin
 rescue Exception => e
   require File.expand_path(File.dirname(__FILE__)) + '/../cici/lib/cici.rb'
 end
+
+require 'yaml'

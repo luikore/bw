@@ -3,10 +3,14 @@
 # setup scintilla
 
 s = $bw.sci
-s.style_set_all Font[ *$config['font'] ], RGB[0xffffff], RGB[0]
+s.style_set_all Font[ *$config['font'] ], *$bw.theme['default']
+
 s.has_lineno = true
 s.fold_margin = 2
-s.indent      = 2 # auto indent 2 chars when needed
+s.fold_margin_color = $bw.theme['fold_margin']
+s.indent = 2
+
+=begin
 s.onstyleneeded = Stylar.method(:onstyleneeded)
 
 s.onmodified  = proc do |sci, scn|
@@ -17,4 +21,6 @@ s.onmodified  = proc do |sci, scn|
     end
   end
 end
+=end
 
+s.focus

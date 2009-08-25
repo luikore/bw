@@ -8,5 +8,6 @@ window:
   - 28
 font: 
 - Monaco
-- 9
+- 10
 default_encoding: utf-8
+theme: darkee
