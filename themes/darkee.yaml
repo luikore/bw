@@ -1,0 +1,65 @@
+--- 
+default: 
+- 14803425
+- 1772298
+fold_margin: 3223341
+styles: 
+  comment: 8421376
+  pod: 13434675
+  int: 13434675
+  float: 13434675
+  string: 8454016
+  char: 8454016
+  word: 8454016
+  regexp: 8453888
+  operator: 4371453
+  keyword1: 16740625
+  keyword2: 16711680
+  keyword3: 16711680
+  keyword4: 16711680
+  global: 16471039
+  id: 14013909
+  var: 16250871
+  const: 16486398
+  type1: 16609740
+  type2: 16603046
+  function: 2019009
+  static_function: 65535
+  class: 16616247
+  module: 16616247
+  interface: 16616247
+  field: 9567730
+  macro_directive: 12011029
+  macro_name: 14190879
+  macro_content: 14190879
+  tag_name: 1246582
+  tag_attr: 16711808
+  tag_attr_val: 65280
+highlights: 
+  selection: 
+  - 16777215
+  - 3097668
+  multiedit: 
+  - 16777215
+  - 5592439
+  search: 
+  - 16777215
+  - 5592405
+  line: 
+  - 16777215
+  - 2829099
+  same_word: 
+  - 16777215
+  - 6234439
+  bracket: 
+  - 16777215
+  - 16689159
+  bracket_unmatched: 
+  - 16777215
+  - 255
+  error: 
+  - 8518908
+  - 111
+  syntax_error: 
+  - 8518908
+  - 7405764
