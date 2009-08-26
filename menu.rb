@@ -3,8 +3,8 @@
 # ------------------------------------------------------------------------------
 # def
 
-fops = Object.new
-class << fops
+Fops = Object.new
+class << Fops
 
   # confirm whether save modified file
   def go_on? save_proc
@@ -24,21 +24,29 @@ class << fops
     $bw.init if go_on? method(:_save)
   end
 
-  def open
+  def _open
     return unless go_on? method(:_save)
-    fn = $app.choose_file 'ruby file'=>'*.rb', 'all'=>'*.*'
-    if fn and File.exist? fn
-      ed = EncodingDetect.new fn
-      $bw.bom = ed.bom
-      $bw.encoding = ed.encoding
-      $bw.sci.text = ed.read
-      $bw.modified = false
-      $bw.filename = fn
-      $bw.sci.empty_undo_buffer
-      if fn =~ /\.rbw?$/
-        load BW_ROOT + '/ftplugin/ruby/ruby.rb'
-      end
+    fn = yield
+    return unless fn and File.exist? fn    
+    # read file, determine encoding by bom, or utf-8
+    ed = EncodingDetect.new fn
+    $bw.bom = ed.bom
+    $bw.encoding = ed.encoding
+    $bw.sci.text = ed.read
+    $bw.modified = false
+    $bw.filename = fn
+    $bw.sci.empty_undo_buffer
+
+    # determine file type and load corresponding plugin
+    if fn =~ /\.rbw?$/
+      load BW_ROOT + '/ftplugin/ruby/ruby.rb'
     end
+  end
+
+  def open
+    _open {
+      $app.choose_file 'all'=>'*.*'
+    }
   end
 
   def _save fn
@@ -86,33 +94,31 @@ class << fops
     end
   end
 
-end # end fops
+end # end Fops
 
 
 # ------------------------------------------------------------------------------
 # run
 
 # build menu bar, must be executed after main window loaded
-$app.main_window.menubar do |m|
-  m.menu 'File' do |f|
-    f.item_with_key('&New', 'N') { fops.new }
-    f.item_with_key('&Open', 'O') { fops.open }
-    f.item_with_key('&Save', 'S') { fops.save }
-    f.item('Save &As') { fops.save_as }
-    f.line
-    f.item('Save &Window Position') { fops.save_window_pos }
-    f.item('E&xit') { fops._exit }
-  end
-  m.menu 'Edit' do |m|
-    m.item('&Undo') { $bw.sci.undo }
-    m.item('&Redo') { $bw.sci.redo }
-  end
-  m.menu 'Help' do |m|
-    m.item('&About') { $app.alert 'black wing 0.0.1' }
-  end
-  m.item '|'
+$bw.menu.popupmenu do |f|
+  f.item_with_key('&New', 'N') { Fops.new }
+  f.item_with_key('&Open', 'O') { Fops.open }
+  f.item_with_key('&Save', 'S') { Fops.save }
+  f.item('Save &As') { Fops.save_as }
+  f.line
+  f.item('Save &Window Position') { Fops.save_window_pos }
+  f.line
+  f.item('&About') { $app.alert 'black wing 0.0.1' }
+  f.item('E&xit') { Fops._exit }
+end
+
+# left click will get it popped too
+$bw.menu.onclick = proc do
+  x, y = $bw.sci.absolute_pos
+  $bw.menu.instance_variable_get("@popupmenu").popup x, y
 end
 
 # when X is clicked
-$app.main_window.onclose = fops.method(:_exit)
+$app.main_window.onclose = Fops.method(:_exit)
 

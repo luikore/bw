@@ -17,7 +17,7 @@ $config = YAML.load_file BW_ROOT + '/config.yaml'
 $app = Cici.app ''
 $bw = Object.new
 class << $bw
-  attr_accessor :sci, :cmd
+  attr_accessor :sci, :cmd, :menu
   attr_accessor :modified, :bom, :encoding
 
   attr_reader :filename, :theme
@@ -64,10 +64,10 @@ $app.paint $config['window']['size'] do |v|
   v.bkcolor = grey
 
   # build menu
+  $bw.menu = v.text "Menu"
   require BW_ROOT + '/menu.rb'
 
   # cmd, size and pos will be set afterwords
-  v.text "RUN"
   $bw.cmd = v.edit [10, 10]
   require BW_ROOT + '/cmd.rb'
 

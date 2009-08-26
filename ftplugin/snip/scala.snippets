@@ -1,0 +1,129 @@
+snippet main
+	def main (args: Array [String]) {
+		${1:/* code */}
+	}
+snippet /*
+	/** ${1}
+	 */
+snippet p
+	println (${1})
+	${2}
+snippet .t
+	.toString
+snippet pr
+	private
+snippet fi
+	final
+snippet ab
+	abstract
+snippet re
+	return
+snippet try
+	try {
+	  ${1}
+	} catch {
+	  case ${2} =>
+	    ${3}
+	}
+snippet th
+	throw ${1}
+snippet im
+	import ${1}
+snippet pa
+	package ${1}
+snippet s.i
+	scala.io.
+snippet s.u
+	scala.util.
+snippet s.x
+	scala.xml.
+snippet j.i
+	java.io.
+snippet j.l
+	java.lang.
+snippet j.u
+	java.util.
+snippet if
+	if (${1}) {
+	  ${2}
+	} ${3}
+snippet el
+	else {
+	  ${1}
+	} ${2}
+snippet ei
+	else if (${1}) {
+	  ${2}
+	} ${3}
+snippet wh
+	while (${1}) {
+	  ${2}
+	} ${3}
+snippet ma
+	match {
+	  ${1}
+	} ${2}
+snippet ca
+	case ${1} => ${2}
+snippet cc
+	case class ${1}
+snippet co
+	case object ${1}
+snippet ob
+	object ${1:`Filename()`}
+snippet cl
+	class ${1}
+snippet tr
+	trait ${1} {
+	  ${2}
+	}
+snippet as
+	assert (${1})
+snippet mapper
+	/** ${1}
+	 */
+	class ${2} extends LongKeyedMapper[${2}] with IdPK {
+	  def getSingleton = ${2}
+	  ${3}
+	}
+
+	/** ${1} singleton
+	 */
+	object ${2} extends ${2}
+	  with LongKeyedMetaMapper[${2}] {
+	  override def FieldOrder = List()
+	}
+snippet def2
+	/** ${1}
+	 *  @param ${2} ...
+	 *  @param ${3} ...
+	 */
+	def ${4}(${2}: ${5}, ${3}: ${6})
+snippet def1
+	/** ${1}
+	 *  @param ${2} ...
+	 */
+	def ${3}(${2}: ${4})
+snippet def0
+	/** ${1}
+	 */
+	def ${2}()
+snippet def
+	/** ${1}
+	 */
+	def ${2}
+snippet \
+	(${1})${2} =>
+		${3}
+snippet imports
+	import _root_.net.liftweb.http._
+	import S._
+	import _root_.net.liftweb.util._
+	import Helpers._
+	import _root_.scala.xml._
+snippet fk
+	MappedLongForeignKey(this, ${1})
+snippet oe
+	object ${1} extends ${2}
+snippet =
+	 = 

@@ -9,9 +9,11 @@ s.has_lineno = true
 s.fold_margin = 2
 s.fold_margin_color = $bw.theme['fold_margin']
 s.indent = 2
+s.style_set_color 34, *$bw.theme['brace']
+s.style_set_color 35, *$bw.theme['brace_unmatched']
+s.set_sel_color *$bw.theme['selection']
 
-=begin
-s.onstyleneeded = Stylar.method(:onstyleneeded)
+# s.onstyleneeded = Stylar.method(:onstyleneeded)
 
 s.onmodified  = proc do |sci, scn|
   unless $bw.modified
@@ -21,6 +23,5 @@ s.onmodified  = proc do |sci, scn|
     end
   end
 end
-=end
 
 s.focus

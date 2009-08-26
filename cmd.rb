@@ -8,3 +8,8 @@ $app.keymap 'ESC' do
     $bw.sci.focus
   end
 end
+
+$bw.cmd.onenter = proc do |c|
+  /^e (?<file>.+)/ =~ c.text
+  Fops._open {file}
+end

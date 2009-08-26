@@ -1,7 +1,7 @@
 --- 
 default: 
-- 14803425
-- 1772298
+- 16119285
+- 524800
 fold_margin: 3223341
 styles: 
   comment: 8421376
@@ -12,22 +12,22 @@ styles:
   char: 8454016
   word: 8454016
   regexp: 8453888
-  operator: 4371453
-  keyword1: 16740625
-  keyword2: 16711680
-  keyword3: 16711680
-  keyword4: 16711680
+  operator: 9956349
+  keyword1: 16728832
+  keyword2: 16728832
+  keyword3: 16728832
+  keyword4: 16728832
   global: 16471039
   id: 14013909
   var: 16250871
   const: 16486398
   type1: 16609740
   type2: 16603046
-  function: 2019009
+  function: 8454143
   static_function: 65535
-  class: 16616247
-  module: 16616247
-  interface: 16616247
+  class: 16744576
+  module: 16744576
+  interface: 16744576
   field: 9567730
   macro_directive: 12011029
   macro_name: 14190879
@@ -51,10 +51,10 @@ highlights:
   same_word: 
   - 16777215
   - 6234439
-  bracket: 
+  brace: 
   - 16777215
   - 16689159
-  bracket_unmatched: 
+  brace_unmatched: 
   - 16777215
   - 255
   error: 

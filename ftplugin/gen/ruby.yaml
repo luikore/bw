@@ -3,7 +3,7 @@ RB_ERROR: error
 RB_COMMENTLINE: comment
 RB_POD: pod
 RB_NUMBER: int
-RB_WORD: word
+RB_WORD: keyword1
 RB_STRING: string
 RB_CHARACTER: char
 RB_CLASSNAME: class
@@ -16,7 +16,7 @@ RB_SYMBOL: id
 RB_MODULE_NAME: module
 RB_INSTANCE_VAR: field
 RB_CLASS_VAR: static_function
-RB_BACKTICKS: keyword1
+RB_BACKTICKS: keyword2
 RB_DATASECTION: macro_content
 RB_HERE_DELIM: macro_directive
 RB_HERE_Q: macro_directive
